@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<title>urca</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+	hellojswqe asdf asdas
+	<a href="uno">ciao</a>
+    <div id="div1">
+          <button id="btn1" >
+              hello
+          </button>
+    </div>
+    <div>
+          <button id="btn2" >
+              post
+          </button>
+    </div>
+    <script>
+        $(function () {
+            $("#btn1").click(function () { 
+                
+                $.getJSON("http://127.0.0.1:1337/jsn1", function (result) {
+                    $.each(result, function (i, field) {
+                        $("#div1").append(field + " "+i);
+                        console.log(field + ":" + i);
+                    });
+                    
+                });
+
+            });
+            $("#btn2").click(function () {
+                $.post("http://127.0.0.1:1337/jsn2",
+                    {
+                        name: "Donald Duck",
+                        city: "Duckburg"
+                    },
+                    function (data, status) {
+                        alert("Status: " + status);
+                        }
+                    );
+               
+
+            });
+
+
+        });
+    </script>
+</body>
+</html>
